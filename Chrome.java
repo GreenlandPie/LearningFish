@@ -3,9 +3,9 @@ import java.math.*;
 
 public class Chrome{
 
-    private double[] genes;
-    private double mutationRate, crossoverRate;
-    private double fitness;
+    public double[] genes;
+    public double mutationRate, crossoverRate;
+    public double fitness;
 
     public Chrome(){
         this(0.4, 0.005);
@@ -16,11 +16,12 @@ public class Chrome{
         this.mutationRate=mutationRate;
 
         genes = new double[Config.NUM_GENES];
+        generateRandomGenes();
     }
 
     public void generateRandomGenes(){
         for(int i=0;i<genes.length;i++){
-            this.genes[i]=(new Random().nextDouble()*Config.OFFSET*2)-Config.OFFSET;
+            setGene(i, (new Random().nextDouble()*Config.OFFSET*2)-Config.OFFSET);
         }
     }
 
@@ -33,7 +34,7 @@ public class Chrome{
     }
 
     public void setGene(int index, double value){
-        genes[index] = value;
+        this.genes[index] = value;
     }
 
     public void setFitness(double fitness){

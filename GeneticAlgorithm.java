@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class GeneticAlgorithm{
 
     public static final int ONE_POINT_CROSSOVER = 1;
@@ -78,7 +80,7 @@ public class GeneticAlgorithm{
         try{
             switch(mode){
                 case UNIFORM_MUTATION:
-                    for(int i=0;i<mutationRate*Config.NUM_GENES){
+                    for(int i=0;i<mutationRate*Config.NUM_GENES;i++){
 
                         int index = new Random().nextInt(Config.NUM_GENES);
                         double value = (new Random().nextDouble()*Config.OFFSET*2)-Config.OFFSET;
@@ -101,7 +103,7 @@ public class GeneticAlgorithm{
                     break;
             }
         }
-        catch(NullPointerException){
+        catch(NullPointerException e){
             System.err.println("Caught NullPointerException: " + e.getMessage());
         }
     }
