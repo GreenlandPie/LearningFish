@@ -5,28 +5,17 @@ public class Chrome{
 
     private double[] genes;
     private double mutationRate, crossoverRate;
-    private int x, y, r, g, b;
-    private float finalDistance, closestDistance, angle;
-    private boolean alive, reached;
 
-    private int timeStart, timeDead, timeReached;
 
-    public Chrome(int x, int y){
-        this(x, y, 0.4, 0.005, new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
+    public Chrome(){
+        this(0.4, 0.005);
     }
 
-    public Chrome(int x, int y, double crossoverRate, double mutationRate, int r, int g, int b){
-        this.x=x;
-        this.y=y;
+    public Chrome(double crossoverRate, double mutationRate){
         this.crossoverRate=crossoverRate;
         this.mutationRate=mutationRate;
-        this.r=r;
-        this.g=g;
-        this.b=b;
 
-        //timeStart = //main.iteration;
-
-        genes = new double[Config.NUM_CHROMOSOMES];
+        genes = new double[Config.NUM_GENES];
     }
 
     public void generateRandomGenes(){
@@ -35,50 +24,12 @@ public class Chrome{
         }
     }
 
-    public int getX(){
-        return this.x;
+    public double getGene(int index){
+        return genes[index];
     }
 
-    public int getY(){
-        return this.y;
-    }
-
-    public float getAngle(){
-        return this.angle;
-    }
-
-    public boolean isAlive(){
-        return this.alive();
-    }
-
-    public void setState(boolean b){
-        alive=b;
-    }
-
-    public void addAngle(float a){
-        this.angle+=a;
-    }
-
-    public void move(int fCount){
-
-        addAngle(genes[fCount]);
-
-        this.x += Config.MOVE_AMOUNT*Math.cos(angle);
-        this.y += COnfig.MOVE_AMOUNT*Math.sin(angle);
-    }
-
-    public void update(){
-
-        if(this.x < 0 || this.x > Config.SCREEN_WIDTH || this.y < 0 || this.y > Config.SCREEN_HEIGHT){
-            //timeDead = main.iteration;
-            setState(false);
-        }
-    }
-
-    public void display(Graphics g){
-
-        g.setColor(new Color(r, g, b));
-        g.fillRect(x, y, x+5, y+5);
+    public void setGene(int index, double value){
+        genes[index] = value;
     }
 
 }

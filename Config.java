@@ -9,7 +9,7 @@ public class Config{
     public static final int END_X = 500;
     public static final int END_Y = 800;
 
-    public static final int NUM_CHROMOSOMES = 1500;
+    public static final int NUM_GENES = 1500;
     public static final int NUM_FRAMES = 1000;
     public static final int MOVE_AMOUNT = 2;
 
