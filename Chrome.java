@@ -5,7 +5,7 @@ public class Chrome{
 
     private double[] genes;
     private double mutationRate, crossoverRate;
-
+    private double fitness;
 
     public Chrome(){
         this(0.4, 0.005);
@@ -28,8 +28,16 @@ public class Chrome{
         return genes[index];
     }
 
+    public double getFitness(){
+        return fitness;
+    }
+
     public void setGene(int index, double value){
         genes[index] = value;
+    }
+
+    public void setFitness(double fitness){
+        this.fitness = fitness;
     }
 
 }

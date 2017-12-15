@@ -7,6 +7,11 @@ public class Unit{
 
     private int timeStart, timeDead, timeReached;
 
+    public Unit(Chrome chrome){
+        this(Config.START_X, Config.START_Y, new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
+        this.chrome = chrome;
+    }
+
     public Unit(int x, int y){
         this(x, y, new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
 
