@@ -9,6 +9,8 @@ public class Chrome{
     private float finalDistance, closestDistance, angle;
     private boolean alive, reached;
 
+    private int timeStart, timeDead, timeReached;
+
     public Chrome(int x, int y){
         this(x, y, 0.4, 0.005, new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
     }
@@ -21,6 +23,8 @@ public class Chrome{
         this.r=r;
         this.g=g;
         this.b=b;
+
+        //timeStart = //main.iteration;
 
         genes = new double[Config.NUM_CHROMOSOMES];
     }
@@ -66,6 +70,7 @@ public class Chrome{
     public void update(){
 
         if(this.x < 0 || this.x > Config.SCREEN_WIDTH || this.y < 0 || this.y > Config.SCREEN_HEIGHT){
+            //timeDead = main.iteration;
             setState(false);
         }
     }
@@ -77,4 +82,3 @@ public class Chrome{
     }
 
 }
-
