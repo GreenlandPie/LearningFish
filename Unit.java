@@ -106,9 +106,16 @@ public class Unit{
         this.y += Config.MOVE_AMOUNT*Math.sin(angle);
     }
 
-    public void update(){
+    public void update(Wall wall){
         if(this.x < 0 || this.x > Config.SCREEN_WIDTH || this.y < 0 || this.y > Config.SCREEN_HEIGHT){
-            
+
+            Board.deads++;
+            this.finalDistance = dist(Config.END_X, Config.END_Y);
+            this.timeDead = Board.frameCount%Config.NUM_FRAMES;
+            setState(false);
+        }
+
+        if(wall.intersects(this.x, this.y)){
             Board.deads++;
             this.finalDistance = dist(Config.END_X, Config.END_Y);
             this.timeDead = Board.frameCount%Config.NUM_FRAMES;

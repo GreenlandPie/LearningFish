@@ -6,6 +6,7 @@ public class Board extends JPanel{
 
     public Population currPop;
     public Unit[] rappr;
+    public Wall wall;
 
     public static int frameCount;
     public static int deads;
@@ -22,6 +23,7 @@ public class Board extends JPanel{
         }
 
         //System.out.println("fin qui arrivo");
+        wall = new Wall(200, 500, 600, 200);
 
         frameCount=0;
         deads=0;
@@ -45,7 +47,7 @@ public class Board extends JPanel{
 
                 rappr[i].move(frameCount);
                 rappr[i].setDistance(tempDist);
-                rappr[i].update();
+                rappr[i].update(wall);
                 rappr[i].fitness();
 
                 if(tempDist < 20){
@@ -54,6 +56,8 @@ public class Board extends JPanel{
                 }
             }
         }
+
+        wall.display(g);
 
         frameCount = (frameCount+1)%Config.NUM_FRAMES;
 
